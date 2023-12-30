@@ -1,0 +1,43 @@
+<style>
+    /* Add your custom styles here */
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Updated: left justified */
+        margin-top: 20px;
+    }
+
+    input {
+        margin-bottom: 10px;
+        padding: 10px; /* Updated: larger */
+        width: 300px; /* Updated: larger */
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
+        width: 300px;
+        border: none;
+        cursor: pointer;
+    }
+
+    p {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+</style>
+
+<form method="POST">
+    <input type="number" name="amount" placeholder="Amount" value="{{ form_data.amount }}">
+    <input type="string" name="annual_rate" placeholder="Annual Rate" value="{{ form_data.annual_rate }}">
+    <input type="number" name="years" placeholder="Years" value="{{ form_data.years }}">
+    <input type="string" name="down_payment" placeholder="Down Payment" value="{{ form_data.down_payment }}">
+    <button type="submit">Calculate</button>
+</form>
+
+{% if result %}
+    <p>{{ result }}</p>
+{% endif %}
+
+<a href="/"><button>Back to Home</button></a>

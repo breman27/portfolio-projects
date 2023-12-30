@@ -1,0 +1,84 @@
+<style>
+    /* Add your custom styles here */
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Updated: left justified */
+        margin-top: 20px;
+    }
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    label {
+        display: block;
+        margin-top: 20px;
+        font-weight: bold;
+    }
+
+    input {
+        margin-bottom: 10px;
+        padding: 10px; /* Updated: larger */
+        width: 300px; /* Updated: larger */
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
+        width: 300px;
+        border: none;
+        cursor: pointer;
+    }
+
+    p {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+
+    ul {
+        margin-top: 20px;
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+</style>
+
+<form method="POST">
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount" placeholder="Amount" value="{{ form_data.amount }}">
+
+    <label for="annual_rate">Annual Rate:</label>
+    <input type="string" id="annual_rate" name="annual_rate" placeholder="Annual Rate" value="{{ form_data.annual_rate }}">
+
+    <label for="years">Years:</label>
+    <input type="number" id="years" name="years" placeholder="Years" value="{{ form_data.years }}">
+
+    <label for="down_payment">Down Payment:</label>
+    <input type="string" id="down_payment" name="down_payment" placeholder="Down Payment" value="{{ form_data.down_payment }}">
+
+    <label for="state_tax_rate">State Tax:</label>
+    <input type="string" id="state_tax_rate" name="state_tax_rate" placeholder="State Tax" value="{{ form_data.state_tax_rate }}">
+
+    <label for="insurance_rate">Insurance:</label>
+    <input type="string" id="insurance_rate" name="insurance_rate" placeholder="Insurance" value="{{ form_data.insurance_rate }}">
+
+    <button type="submit">Calculate</button>
+</form>
+
+{% if total_cost %}
+    <p>${{ total_cost }}</p>
+    {% if breakdown %}
+        <p>Breakdown:</p>
+        <ul>
+            {% for key, value in breakdown.items() %}
+                <li>{{ key }}: ${{ value }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endif %}
+
+<a href="/"><button>Back to Home</button></a>
