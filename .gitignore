@@ -2,3 +2,5 @@ tls-proxy/cert.pem
 tls-proxy/key.pem
 tls-proxy/results.bin
 tls-proxy/ert
+ml-deployment/go.sum
+tls-proxy/go.sum
